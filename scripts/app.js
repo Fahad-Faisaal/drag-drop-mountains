@@ -14,19 +14,33 @@ const mountains = [
   'Mountain Annapurna',
 ];
 
-const listItems = mountains.map((mountain, i) => {
-  const list = document.createElement('li');
-  list.setAttribute('data-index', i);
+const listItems = [];
 
-  list.innerHTML = `
-    <span class="number">${i + 1}</span>
-    <div class="draggable" draggable="true">
-       <p class="mountain-name">${mountain}</p>
-    </div>
-  `;
+function createList() {
+  [...mountains]
+  .map(a => {
+    return {value: a, sortList: Math.random()}
+  })
+  .sort((a, b) => a.sortList - b.sortList)
+  .map(el => el.value)
+  .forEach((mountain, index) => {
+    console.log(mountain);
+    const list = document.createElement('li');
 
-  mountainsList.appendChild(list);
+    list.setAttribute('data-index', index);
 
-  return list;
-});
+    list.innerHTML = `
+      <span class="number">${index + 1}</span>
+      <div class="draggable" draggable="true">
+        <p class="mountain-name">${mountain}</p>
+      </div>
+    `;
+
+    listItems.push(list);
+
+    mountainsList.appendChild(list);
+  })
+}
+
+createList();
 
