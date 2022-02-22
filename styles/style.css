@@ -71,3 +71,16 @@ main {
   padding: 8px;
   cursor: grab;
 }
+
+#draggable-list li.right .mountain-name {
+  color: #3ae374;
+}
+
+#draggable-list li.wrong .mountain-name {
+  color: #ff3838;
+}
+
+#draggable-list li.over {
+  background-color: #eaeaea;
+}
+
